@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import Post from '../../components/Posts'
 import Header from '../../components/Header'
@@ -46,13 +46,13 @@ export default ( ) => {
   ])
   
   return (
-    <SafeAreaView>
+    <View>
       <Header/>
       <FlatList
         data={posts}
         keyExtractor={item=>`${item.id}`}
         renderItem={({item})=> <Post key={item.id} {...item} />}
       />
-    </SafeAreaView>
+    </View>
   );
 }
