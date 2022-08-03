@@ -5,57 +5,50 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
  
 import Feed from '../views/Feed';
+import AddPhoto from '../views/AddPhoto';
  
 const Tab = createBottomTabNavigator();
  
 const Navigator = () => {
+
+  const tabs = [
+    {
+      id:1,
+      name:"Feed",
+      screen:Feed,
+      icon:"home"
+    },
+    {
+      id:2,
+      name:"AddPhoto",
+      screen:AddPhoto,
+      icon:"camera"
+    },
+  ]
+
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName={'Feed'}
         tabBarOptions={{ showLabel: false }}>
-        <Tab.Screen
-          name={'Feed'}
-          component={Feed}
-          options={{
-            title: 'Feed',
-            tabBarIcon: ({ focused }) => (
-              <FontAwesome
-                name="home"
-                size={30}
-                color={focused ? '#28527a' : '#000'}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name={'AddPhoto'}
-          component={Feed}
-          options={{
-            title: 'Add Picture',
-            tabBarIcon: ({ focused }) => (
-              <FontAwesome
-                name="camera"
-                size={30}
-                color={focused ? '#28527a' : '#000'}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name={'Profile'}
-          component={Feed}
-          options={{
-            title: 'Profile',
-            tabBarIcon: ({ focused }) => (
-              <FontAwesome
-                name="user"
-                size={30}
-                color={focused ? '#28527a' : '#000'}
-              />
-            ),
-          }}
-        />
+        {
+          tabs.map((tab,idx)=>(<Tab.Screen
+            key={tab.id}
+            name={tab.name}
+            component={tab.screen}
+            options={{
+              title: tab.name,
+              tabBarIcon: ({ focused }) => (
+                <FontAwesome
+                  name={tab.icon}
+                  size={30}
+                  color={focused ? '#28527a' : '#000'}
+                />
+              ),
+            }}
+          />))
+        }      
       </Tab.Navigator>
     </NavigationContainer>
   );
