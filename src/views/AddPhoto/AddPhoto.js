@@ -14,10 +14,10 @@ export default ()  => {
   const deviceWidth = Dimensions.get('window').width
   
   const pickImage = async () => {
-    if ( !props.name ){
-      Alert.alert('Falha',noUser)
-      return 
-    }
+    // if ( !props.name ){
+    //   Alert.alert('Falha',noUser)
+    //   return 
+    // }
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,

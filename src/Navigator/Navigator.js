@@ -6,6 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
  
 import Feed from '../views/Feed';
 import AddPhoto from '../views/AddPhoto';
+import Profile from '../views/Profile';
  
 const Tab = createBottomTabNavigator();
  
@@ -24,6 +25,12 @@ const Navigator = () => {
       screen:AddPhoto,
       icon:"camera"
     },
+    {
+      id:3,
+      name:"Profile",
+      screen:Profile,
+      icon:"user"
+    },
   ]
 
 
@@ -31,7 +38,7 @@ const Navigator = () => {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName={'Feed'}
-        tabBarOptions={{ showLabel: false }}>
+        tabBarOptions={{ showLabel: false  }}>
         {
           tabs.map((tab,idx)=>(<Tab.Screen
             key={tab.id}
@@ -39,6 +46,7 @@ const Navigator = () => {
             component={tab.screen}
             options={{
               title: tab.name,
+              headerShown:false,
               tabBarIcon: ({ focused }) => (
                 <FontAwesome
                   name={tab.icon}
