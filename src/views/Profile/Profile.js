@@ -1,11 +1,12 @@
 import React from 'react';
 
 import {Avatar,Email,ButtonText,Button,NickName,Container} from './styles'
+import { useNavigation } from '@react-navigation/native';
 
 export default () => {
-
+  const Navigate = useNavigation()
   const logOut = ()=>{
-    console.log('ok')
+    Navigate.navigate('Login')
   }
   const options = {
     email:'saaaa@gmail.com',

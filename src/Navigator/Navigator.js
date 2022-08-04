@@ -2,11 +2,14 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import StackLogin from './Stack.login';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
  
 import Feed from '../views/Feed';
 import AddPhoto from '../views/AddPhoto';
-import Profile from '../views/Profile';
+
  
 const Tab = createBottomTabNavigator();
  
@@ -28,7 +31,7 @@ const Navigator = () => {
     {
       id:3,
       name:"Profile",
-      screen:Profile,
+      screen:StackLogin,
       icon:"user"
     },
   ]
