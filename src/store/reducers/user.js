@@ -14,8 +14,9 @@ const reducer = (state = {} , action) =>{
           name:null,
           email:null
         }
+    default:
+        return state
     }
-  return state
 }
 
 export default reducer

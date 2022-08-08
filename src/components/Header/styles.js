@@ -1,3 +1,4 @@
+import { Gravatar } from "react-native-gravatar";
 import { css } from "styled-components";
 import styled from "styled-components/native";
 
@@ -8,11 +9,13 @@ const applyStyleProp = css`
 
 export const Container = styled.View`
   ${applyStyleProp};
+  margin-top:15;
   padding: 10px;
   border-bottom-width:1px;
   border-color: '#BBB';
-  /* flex-direction: 'row'; */
-  /* justify-content: 'space-between'; */
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const Row = styled.View`
@@ -31,4 +34,20 @@ export const Title = styled.Text`
   color:#000;
   height:30px;
   font-size:20px;
+`
+
+export const Avatar = styled(Gravatar)`
+  width:30;
+  height:30;
+  margin-left:10;
+`
+
+export const UserName = styled.Text`
+  font-size:10;
+  color:#888;
+`
+
+export const UserContainer  = styled.View`
+  flex-direction:row;
+  align-items:center;
 `

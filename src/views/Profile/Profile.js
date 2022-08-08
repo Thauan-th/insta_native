@@ -3,24 +3,32 @@ import React from 'react';
 import {Avatar,Email,ButtonText,Button,NickName,Container} from './styles'
 import { useNavigation } from '@react-navigation/native';
 
-export default () => {
-  const Navigate = useNavigation()
-  const logOut = ()=>{
-    Navigate.navigate('Login')
-  }
-  const options = {
-    email:'saaaa@gmail.com',
-    secure:true
-  }
+import {useSelector} from 'react-redux'
 
- return (
-   <Container>
-    <Avatar options={options} />
-    <NickName>Email</NickName>
-    <Email>Thauan@gmail.com</Email>
-    <Button onPress={logOut}>
-      <ButtonText>Sair</ButtonText>
-    </Button>
-   </Container>
-  );
+export default ({
+    logOut:userLogOut,
+    nickname
+  }) => {
+    const email =  useSelector(state => state.user.email)
+    const Navigate = useNavigation()
+
+    const logOut = ()=>{
+      // userLogOut()
+      Navigate.navigate('Login')
+    }
+    const options = {
+      email,
+      secure:true
+    }
+
+  return (
+    <Container>
+      <Avatar options={options} />
+      <NickName>{nickname || "A"}</NickName>
+      <Email>{email}</Email>
+      <Button onPress={logOut}>
+        <ButtonText>Sair</ButtonText>
+      </Button>
+    </Container>
+    );
 }

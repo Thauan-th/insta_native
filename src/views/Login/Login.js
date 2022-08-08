@@ -1,20 +1,32 @@
-import React from 'react';
-import { Container} from './styles'
+import React, { useState } from 'react';
+
+import {useDispatch} from 'react-redux'
+import {login} from '../../store/actions/user'
 
 import { useNavigation } from '@react-navigation/native';
 
 import * as Styled from './styles'
 
 export default ()=>{
-
-  const [email,setEmail] = React.useState()
-  const [password,setPassword] =React.useState()
+  const dispatch = useDispatch()
+  const [inputs,setInputs] = useState({
+    password:"",
+    email:""
+  })
 
   const navigate = useNavigation()
 
-  const login = ()=>{
-    navigate.navigate('Login')
+  const handleLogin = ()=>{
+    const toDispatch = {
+      user:{
+        email:inputs.email,
+        password:inputs.password
+      }
+    }
+    dispatch(login(toDispatch.user))
+    navigate.navigate('Profile')
   }
+
   const register = ()=>{
     navigate.navigate('Register')
   }
@@ -24,17 +36,17 @@ export default ()=>{
     <Styled.InputText
       placeholder='email'
       keyboardType={'email-address'}
-      value={email}
-      onChangeText={t=>setEmail(t)}
+      value={inputs.email}
+      onChangeText={t=>setInputs(prev=>({...prev,email:t}))}
 
     />
     <Styled.InputText
       placeholder='password'
       secureTextEntry={true}
-      value={password}
-      onChangeText={p=>setPassword(p)}
+      value={inputs.password}
+      onChangeText={p=>setInputs(prev=>({...prev,password:p}))}
     />
-    <Styled.Button onPress={login}>
+    <Styled.Button onPress={handleLogin}>
       <Styled.ButtomText>Login</Styled.ButtomText>
     </Styled.Button>
     <Styled.Button onPress={register}>
