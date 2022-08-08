@@ -1,4 +1,2 @@
-export const actions = {
-  CHANGE_NAME:"CHANGE_NAME",
-  CHANGE_PASSWORD:"CHANGE_PASSWORD"
-} 
+export const USER_LOGGED_IN="USER_LOGGED_IN"
+export const USER_LOGGED_OUT="USER_LOGGED_OUT"
